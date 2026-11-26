@@ -6,7 +6,10 @@ for i,v in pairs(getgc(true)) do
    end
 end
 
-while true do
-    print("Loop Running")
-    task.wait(1)
-end
+local VirtualUser = game:GetService("VirtualUser")
+local Player = game:GetService("Players").LocalPlayer
+
+Player.Idled:Connect(function()
+	VirtualUser:CaptureController()
+	VirtualUser:ClickButton2(Vector2.new())
+end)
